@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/server.js",
   "scripts": {
-    "preinstall": "node gcpSetup.js",
+    "preinstall": "npm i dotenv && node gcpSetup.js",
     "test": "mocha --require test/setup.js",
     "migrate": "postgrator --config postgrator-config.js",
     "migrate:test": "env NODE_ENV=test npm run migrate",
@@ -24,7 +24,7 @@
     "aws-sdk": "^2.579.0",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
-    "dotenv": "^8.1.0",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "helmet": "^3.21.1",
     "jsonwebtoken": "^8.5.1",
