@@ -7,18 +7,18 @@ function getDefaultPlaceData(lat, lon) {
     qs: {
       key: config.GOOGLE_PLACES_API_KEY,
       location: `${lat},${lon}`,
-      radius: 20000,
+      radius: 20000
     },
     headers: {
-      'User-Agent': 'Request-Promise',
+      'User-Agent': 'Request-Promise'
     },
-    json: true, // Automatically parses the JSON string in the response
+    json: true // Automatically parses the JSON string in the response
   }
   return rqPromise(options)
-};
+}
 
 function getImageByReference(photoreference) {
-  let imageURL;
+  let imageURL
   const options = {
     uri: 'https://maps.googleapis.com/maps/api/place/photo',
     qs: {
@@ -27,22 +27,21 @@ function getImageByReference(photoreference) {
       maxwidth: 500
     },
     headers: {
-      'User-Agent': 'Request-Promise',
+      'User-Agent': 'Request-Promise'
     },
     // hijack the redirect header from Google which contains
     // the hosted image url, otherwise the end result is an actual
     // file that would require re-uploading into our own cloud storage
     // questionable legality to take the photo and store it
 
-    followRedirect: (res) => {
+    followRedirect: res => {
       imageURL = res.headers.location
       return true
     },
     json: true
   }
   // we only care about Google's hosted asset
-  return rqPromise(options)
-    .then(() => imageURL)
+  return rqPromise(options).then(() => imageURL)
 }
 
 module.exports = {

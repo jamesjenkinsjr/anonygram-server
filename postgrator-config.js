@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config()
 
 module.exports = {
   migrationDirectories: 'migrations',
@@ -7,5 +7,5 @@ module.exports = {
     process.env.NODE_ENV === 'test'
       ? process.env.TEST_DB_URL
       : process.env.DATABASE_URL,
-  ssl: !!process.env.SSL,
-};
+  ssl: !!process.env.SSL
+}
